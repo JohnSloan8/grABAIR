@@ -9,7 +9,7 @@ class POSDefaultNoun(BaseModel):
     isDefinite: Optional[str] = None
     allowArticledGenitive: Optional[str] = None
 
-class POSNounVariation(BaseModel):
+class POSNoun(BaseModel):
     submitted: str
     default: str 
     word: str
