@@ -1,17 +1,22 @@
-from tokenise.create_word_object_list import create_word_object_list
-from grammar_check.check_article_noun_gender import check_article_noun_gender_number
+from tokenise.main import tokenise
+from grammar_check.main import check_article_noun_gender_number
 
-def grammar_controller(phrase: str):
+def grammar_controller(phrase: str, verbose):
     word_list = phrase.split()
-    word_objects_list = create_word_object_list(word_list)
+
+    # create a list of list of word objects of all possible words    
+    word_objects_list = tokenise(word_list, verbose)
+
     # for now, just take the first word from each array
     word_object_list = [x[0] for x in word_objects_list]
-    print('word_object_list:', word_object_list)
-    article_noun_gender_number = check_article_noun_gender_number(word_object_list)
-    # print('article_noun_gender_number:', article_noun_gender_number)
+    
+    # print('\n\n --- word_object_list --- \n', word_object_list)
+
+    feedback = check_article_noun_gender_number(word_object_list, verbose)
+    
     corrected_word_list = word_list.copy()
-    for key in article_noun_gender_number.keys():
-        corrected_word_list[key] = article_noun_gender_number[key]
+    for key in feedback.keys():
+        corrected_word_list[key] = feedback[key]
     # # print('corrected_word_list:', corrected_word_list)
     corrected_phrase = ' '.join(corrected_word_list)
     return corrected_phrase
