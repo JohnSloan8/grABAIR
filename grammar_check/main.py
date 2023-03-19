@@ -7,7 +7,7 @@ import json
 f = open('./wordData/default_nouns.json')
 default_nouns = json.load(f)
 
-def check_article_noun_gender_number(word_object_list):
+def check_article_noun_gender_number(word_object_list, verbose):
     # print('\n---in check_article_noun_gender---\n')
 
     feedback = {}
@@ -17,13 +17,14 @@ def check_article_noun_gender_number(word_object_list):
                 if word_object_list[i-1].word == "an":
                     if word_object.gender == "masc":
                         if word_object.case == "nom":
-                            if word_object.word[0] in vowels and word_object.prefixT:
-                                feedback[i] = "t-" + word_object.submitted
-                            if word_object.number == "pl":
+                            if word_object.word[0] in vowels:
+                                if not word_object.prefixT:
+                                    feedback[i] = "t-" + word_object.word
+                            elif word_object.number == "pl":
                                 feedback[i] = default_nouns[word_object.default]["plNom"]
-                            if word_object.eclipsed:
+                            elif word_object.eclipsed:
                                 feedback[i] = word_object.word
-                            if word_object.prefixT:
+                            elif word_object.prefixT:
                                 feedback[i] = word_object.word
                             # feedback[i] = default_nouns[word_object.default]["sgNom"]
                     elif word_object.gender == "fem":
@@ -38,5 +39,6 @@ def check_article_noun_gender_number(word_object_list):
                     if word_object.case == "nom":
                         if word_object.submitted[0] in vowels:
                             feedback[i] = "h" + word_object.word
-            
+    if verbose:
+        print('\n\n --- feedback --- \n', feedback)
     return feedback
