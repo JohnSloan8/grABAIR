@@ -4,7 +4,17 @@ import time
 app = FastAPI()
 
 @app.get("/")
-async def root(phrase: str):
+async def root():
+    start = time.time()
+    word_object_list = grammar_controller(phrase)
+    end = time.time()
+    return {
+        "time": end - start,
+        "word_object_list": word_object_list
+    }
+
+@app.get("/tokenise/{phrase}")
+async def root():
     start = time.time()
     word_object_list = grammar_controller(phrase)
     end = time.time()

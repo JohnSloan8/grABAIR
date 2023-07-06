@@ -3,6 +3,7 @@ from models.articles import POSArticle
 from models.general import POSWord
 from tokenise.check_modifications import check_modifications
 
+
 def tokenise(words, verbose):
 
     word_objects = []
@@ -16,13 +17,13 @@ def tokenise(words, verbose):
             word_object.append(article)
         else:
             base_word, eclipsed, prefix_t, prefix_h = check_modifications(word)
-    
+
             # check if in nouns
             nouns = word_in_nouns(word, base_word, eclipsed, prefix_t)
-            
+
             if len(nouns) > 0:
                 word_object.extend(nouns)
-            else:   
+            else:
                 word_object.append(POSWord(word=word))
         word_objects.append(word_object)
 

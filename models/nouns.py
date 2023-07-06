@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional
 
+
 class POSDefaultNoun(BaseModel):
     declension: Optional[str] = None
     disambig: Optional[str] = None
@@ -9,14 +10,13 @@ class POSDefaultNoun(BaseModel):
     isDefinite: Optional[str] = None
     allowArticledGenitive: Optional[str] = None
 
+
 class POSNoun(BaseModel):
-    submitted: str
-    default: str 
-    word: str
-    strength: Optional[str] = None
-    gender: str = None
+    default: POSDefaultNoun
     number: str = None
     case: str = None
+    gender: str = None
+    strength: Optional[str] = None
     eclipsed: bool = False
     prefixT: bool = False
     prefixH: bool = False
