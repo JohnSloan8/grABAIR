@@ -3,8 +3,8 @@ from models.nouns import POSNoun
 from config import ROOT_DIR
 import os
 
-f = open(os.path.join(ROOT_DIR, 'wordData', 'defaults', 'noun_variations.json'))
-nouns = json.load(f)
+# f = open(os.path.join(ROOT_DIR, 'wordData', 'defaults', 'noun_variations.json'))
+# nouns = json.load(f)
 
 
 def word_in_nouns(word, base_word, eclipsed=False, prefixT=False, prefix_h=False, plural=False):

@@ -2,20 +2,15 @@
 from fastapi import FastAPI
 from tokenise.main import tokenise
 from typing import Union
-
+import json
+from config import ROOT_DIR
+import os
 
 app = FastAPI()
 
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
-
+with open(os.path.join(ROOT_DIR, 'wordData',  'wordObjectDictionary.json')) as f:
+    all_word_data = json.load(f)
 
 @app.post("/tokenise/")
 def read_item(phrase: str):
