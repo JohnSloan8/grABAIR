@@ -3,6 +3,7 @@ from typing import Optional
 
 
 class POSDefaultNoun(BaseModel):
+    word: str = None
     declension: Optional[str] = None
     disambig: Optional[str] = None
     isProper: Optional[str] = None
@@ -12,11 +13,14 @@ class POSDefaultNoun(BaseModel):
 
 
 class POSNoun(BaseModel):
+    word: str = None
+    unmodified_word: str = None
     default: POSDefaultNoun
-    number: str = None
-    case: str = None
-    gender: str = None
+    number: Optional[str] = None
+    case: Optional[str] = None
+    gender: Optional[str] = None
     strength: Optional[str] = None
     eclipsed: bool = False
+    lenition: bool = False
     prefixT: bool = False
     prefixH: bool = False

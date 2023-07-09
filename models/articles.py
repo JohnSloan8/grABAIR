@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class POSArticle(BaseModel):
-    word: str
-    number: str
+    word: str = None
+    number: str = None
