@@ -9,7 +9,6 @@ class POSDefaultMood(BaseModel):
 
 class POSMood(BaseModel):
     word: str = None
-    unmodified_word: str = None
     default: POSDefaultMood
     mood: Optional[str] = None
     person: Optional[str] = None

@@ -17,6 +17,7 @@ def check(input: str):
     print('tokenised input:', tokenised_input)
     objects = create_objects(
         tokenised_input, all_words_dict, default_nouns_dict, default_adjectives_dict, default_possessives_dict, default_prepositions_dict, default_pronouns_dict, default_verbs_dict)
+
     print('objects:', objects)
 
     return {"objects"}

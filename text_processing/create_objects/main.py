@@ -5,6 +5,7 @@ from .populate_objects.populate_adjective_object import populate_adjective_objec
 from .populate_objects.populate_verb_object import populate_verb_object
 from .populate_objects.populate_verbal_noun_object import populate_verbal_noun_object
 from .populate_objects.populate_verbal_adjective_object import populate_verbal_adjective_object
+from .populate_objects.populate_mood_object import populate_mood_object
 from .populate_objects.populate_possessive_object import populate_possessive_object
 from .populate_objects.populate_pronoun_object import populate_pronoun_object
 from .populate_objects.populate_preposition_object import populate_preposition_object
@@ -39,6 +40,9 @@ def create_objects(tokenised_input, all_words_dict, default_nouns_dict, default_
                             word_data['default'], word_data, default_verbs_dict)
                     elif word_data['type'] == 'verbal adjective':
                         word_object = populate_verbal_adjective_object(
+                            word_data['default'], word_data, default_verbs_dict)
+                    elif word_data['type'] == 'mood':
+                        word_object = populate_mood_object(
                             word_data['default'], word_data, default_verbs_dict)
                     elif word_data['type'] == 'possessive':
                         word_object = populate_possessive_object(
