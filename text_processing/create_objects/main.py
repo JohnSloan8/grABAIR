@@ -9,6 +9,7 @@ from .populate_objects.populate_mood_object import populate_mood_object
 from .populate_objects.populate_possessive_object import populate_possessive_object
 from .populate_objects.populate_pronoun_object import populate_pronoun_object
 from .populate_objects.populate_preposition_object import populate_preposition_object
+from .populate_objects.populate_article_object import populate_article_object
 
 
 @timer
@@ -18,7 +19,11 @@ def create_objects(tokenised_input, all_words_dict, default_nouns_dict, default_
         sentence_object_list = []
         for word in sentence:
             word_object_list = []
-            # base word will be same if no modification
+
+            if word in ["an", "na"]:
+                word_object = populate_article_object(word)
+                word_object_list.append(word_object)
+
             unmodified_word, modification, lenition, eclipsed, prefixT, prefixH = check_modifications(
                 word)
             word_data_from_dict = all_words_dict.get(unmodified_word)
@@ -53,7 +58,6 @@ def create_objects(tokenised_input, all_words_dict, default_nouns_dict, default_
                     elif word_data['type'] == 'preposition':
                         word_object = populate_preposition_object(
                             word_data['default'], word_data, default_prepositions_dict)
-
                     if word_object is not None:
                         word_object_list.append(word_object)
             sentence_object_list.append(word_object_list)
