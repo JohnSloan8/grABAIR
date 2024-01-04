@@ -8,7 +8,8 @@ class POSDefaultMood(BaseModel):
 
 
 class POSMood(BaseModel):
+    POS: Optional[str] = None
     word: str = None
-    default: POSDefaultMood
     mood: Optional[str] = None
     person: Optional[str] = None
+    default: POSDefaultMood

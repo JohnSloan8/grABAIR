@@ -25,10 +25,11 @@ def populate_mood_object(default_word, word_data, default_verbs_dict):
             person = word_data['person']
 
         mood_object = POSMood(
+            POS="MOOD",
             word=word_data['word'],
-            default=default_mood_object,
             mood=mood,
-            person=person
+            person=person,
+            default=default_mood_object
         )
 
         return mood_object

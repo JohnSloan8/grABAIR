@@ -56,11 +56,12 @@ def populate_preposition_object(default_word, word_data, default_prepositions_di
             gender = word_data['gender']
 
         preposition_object = POSPreposition(
+            POS="PREPOSITION",
             word=word_data['word'],
-            default=default_preposition_object,
             person=person,
             case=case,
             gender=gender,
+            default=default_preposition_object
         )
 
         return preposition_object

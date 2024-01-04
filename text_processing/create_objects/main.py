@@ -14,16 +14,13 @@ from .populate_objects.populate_article_object import populate_article_object
 
 @timer
 def create_objects(tokenised_input, all_words_dict, default_nouns_dict, default_adjectives_dict, default_possessives_dict, default_prepositions_dict, default_pronouns_dict, default_verbs_dict):
-    sentences_object_list = []
-    for sentence in tokenised_input:
-        sentence_object_list = []
-        for word in sentence:
-            word_object_list = []
-
-            if word in ["an", "na"]:
-                word_object = populate_article_object(word)
-                word_object_list.append(word_object)
-
+    sentence_object_list = []
+    for word in tokenised_input:
+        word_object_list = []
+        if word in ["an", "na"]:
+            word_object = populate_article_object(word)
+            word_object_list.append(word_object)
+        else:
             unmodified_word, modification, lenition, eclipsed, prefixT, prefixH = check_modifications(
                 word)
             word_data_from_dict = all_words_dict.get(unmodified_word)
@@ -60,6 +57,5 @@ def create_objects(tokenised_input, all_words_dict, default_nouns_dict, default_
                             word_data['default'], word_data, default_prepositions_dict)
                     if word_object is not None:
                         word_object_list.append(word_object)
-            sentence_object_list.append(word_object_list)
-        sentences_object_list.append(sentence_object_list)
-    return sentences_object_list
+        sentence_object_list.append(word_object_list)
+    return sentence_object_list

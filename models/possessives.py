@@ -12,8 +12,9 @@ class POSDefaultPossessive(BaseModel):
 
 
 class POSPossessive(BaseModel):
+    POS: Optional[str] = None
     word: str = None
-    default: POSDefaultPossessive
     number: Optional[str] = None
     gender: Optional[str] = None
     form: Optional[str] = None
+    default: POSDefaultPossessive

@@ -9,8 +9,9 @@ class POSDefaultPronoun(BaseModel):
 
 
 class POSPronoun(BaseModel):
+    POS: Optional[str] = None
     word: str = None
-    default: POSDefaultPronoun
     number: Optional[str] = None
     gender: Optional[str] = None
     form: Optional[str] = None
+    default: POSDefaultPronoun

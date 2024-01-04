@@ -28,14 +28,15 @@ def populate_verb_object(unmodified_word, default_word, lenition, eclipsed, word
             person = word_data['person']
 
         verb_object = POSVerb(
+            POS="VERB",
             word=word_data['word'],
             unmodified_word=unmodified_word,
-            default=default_verb_object,
             tense=tense,
             dependency=dependency,
             person=person,
             eclipsed=eclipsed,
-            lenition=lenition
+            lenition=lenition,
+            default=default_verb_object
         )
 
         return verb_object

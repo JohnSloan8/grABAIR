@@ -14,11 +14,12 @@ class POSDefaultAdjective(BaseModel):
 
 
 class POSAdjective(BaseModel):
+    POS: Optional[str] = None
     word: str = None
     unmodified_word: str = None
-    default: POSDefaultAdjective
     number: Optional[str] = None
     case: Optional[str] = None
     gender: Optional[str] = None
     graded: Optional[bool] = False
     lenition: Optional[bool] = False
+    default: POSDefaultAdjective

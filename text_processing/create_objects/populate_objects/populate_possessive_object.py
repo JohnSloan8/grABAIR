@@ -44,11 +44,12 @@ def populate_possessive_object(default_word, word_data, default_possessives_dict
             form = word_data['form']
 
         possessive_object = POSPossessive(
+            POS="POSSESSIVE",
             word=word_data['word'],
-            default=default_possessive_object,
             number=number,
             gender=gender,
-            form=form
+            form=form,
+            default=default_possessive_object
         )
 
         return possessive_object

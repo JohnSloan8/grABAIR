@@ -55,14 +55,15 @@ def populate_adjective_object(unmodified_word, default_word, lenition, word_data
             graded = word_data['graded']
 
         adjective_object = POSAdjective(
+            POS="ADJ",
             word=word_data['word'],
             unmodified_word=unmodified_word,
-            default=default_adjective_object,
             number=number,
             case=case,
             gender=gender,
             graded=graded,
             lenition=lenition,
+            default=default_adjective_object
         )
 
         return adjective_object

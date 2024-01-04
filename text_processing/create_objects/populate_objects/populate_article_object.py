@@ -12,15 +12,17 @@ def populate_article_object(word):
     if word == "an":
         article_object = POSArticle(
             word="an",
-            default=default_article_object,
-            number="sg"
+            POS="article",
+            number="sg",
+            default=default_article_object
         )
 
     elif word == "na":
         article_object = POSArticle(
             word="na",
-            default=default_article_object,
-            number="pl"
+            POS="ARTICLE",
+            number="pl",
+            default=default_article_object
         )
 
     return article_object

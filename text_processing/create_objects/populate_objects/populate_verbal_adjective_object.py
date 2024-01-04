@@ -17,6 +17,7 @@ def populate_verbal_adjective_object(default_word, word_data, default_verbs_dict
         )
 
         verbal_adjective_object = POSVerbalAdjective(
+            POS="VERBAL_ADJECTIVE",
             word=word_data['word'],
             default=default_verb_object,
         )

@@ -51,9 +51,9 @@ def populate_noun_object(unmodified_word, default_word, lenition, eclipsed, pref
             strength = word_data['strength']
 
         noun_object = POSNoun(
+            POS="NOUN",
             word=word_data['word'],
             unmodified_word=unmodified_word,
-            default=default_noun_object,
             number=number,
             case=case,
             gender=gender,
@@ -61,7 +61,8 @@ def populate_noun_object(unmodified_word, default_word, lenition, eclipsed, pref
             lenition=lenition,
             eclipsed=eclipsed,
             prefixT=prefixT,
-            prefixH=prefixH
+            prefixH=prefixH,
+            default=default_noun_object,
         )
 
         return noun_object

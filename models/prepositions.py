@@ -15,8 +15,9 @@ class POSDefaultPreposition(BaseModel):
 
 
 class POSPreposition(BaseModel):
+    POS: Optional[str] = None
     word: str = None
-    default: POSDefaultPreposition
     person: Optional[str] = None
     case: Optional[str] = None
     gender: Optional[str] = None
+    default: POSDefaultPreposition

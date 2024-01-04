@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-
+from typing import Optional
 
 class POSDefaultArticle(BaseModel):
     word: str = None
@@ -8,6 +8,8 @@ class POSDefaultArticle(BaseModel):
 
 
 class POSArticle(BaseModel):
+    POS: Optional[str] = None
     word: str = None
-    default: POSDefaultArticle = None
     number: str = None
+    default: POSDefaultArticle = None
+

@@ -13,9 +13,9 @@ class POSDefaultNoun(BaseModel):
 
 
 class POSNoun(BaseModel):
+    POS: Optional[str] = None
     word: str = None
     unmodified_word: str = None
-    default: POSDefaultNoun
     number: Optional[str] = None
     case: Optional[str] = None
     gender: Optional[str] = None
@@ -24,3 +24,4 @@ class POSNoun(BaseModel):
     lenition: bool = False
     prefixT: bool = False
     prefixH: bool = False
+    default: POSDefaultNoun

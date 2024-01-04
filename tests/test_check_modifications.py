@@ -1,8 +1,7 @@
-from text_processing.create_objects.check_modifications import check_modifications
 import unittest
 import sys
 sys.path.append("..")
-
+from text_processing.create_objects.check_modifications import check_modifications
 
 class TestCheckModifications(unittest.TestCase):
 
@@ -32,15 +31,31 @@ class TestCheckModifications(unittest.TestCase):
     def test_check_modifications(self):
         for case, judgements in self.test_cases.items():
             for word in judgements["modified"]:
-                unmodified_word, modification = check_modifications(
-                    word[0].lower())
+                unmodified_word, modification, lenition, eclipsed, prefixT, prefixH = check_modifications(
+                    word[0])
                 self.assertEqual(word[1].lower(), unmodified_word)
                 self.assertIsNotNone(modification, word)
+                if case == "seimhu":
+                    self.assertTrue(lenition)
+                elif case == "uru":
+                    self.assertTrue(eclipsed)
+                elif case in ["t-vowel", "ts"]:
+                    self.assertTrue(prefixT)
+                elif case == "h-vowel":
+                    self.assertTrue(prefixH)
             for word in judgements["unmodified"]:
-                unmodified_word, modification = check_modifications(
-                    word.lower())
+                unmodified_word, modification, lenition, eclipsed, prefixT, prefixH = check_modifications(
+                    word)
                 self.assertEqual(word, unmodified_word)
                 self.assertIsNone(modification, word)
+                if case == "seimhu":
+                    self.assertFalse(lenition)
+                elif case == "uru":
+                    self.assertFalse(eclipsed)
+                elif case in ["t-vowel", "ts"]:
+                    self.assertFalse(prefixT)
+                elif case == "h-vowel":
+                    self.assertFalse(prefixH)
 
 
 if __name__ == '__main__':

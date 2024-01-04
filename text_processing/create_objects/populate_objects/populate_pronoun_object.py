@@ -32,11 +32,12 @@ def populate_pronoun_object(default_word, word_data, default_pronouns_dict):
             form = word_data['form']
 
         pronoun_object = POSPronoun(
+            POS="PRONOUN",
             word=word_data['word'],
-            default=default_pronoun_object,
             number=number,
             gender=gender,
-            form=form
+            form=form,
+            default=default_pronoun_object
         )
 
         return pronoun_object

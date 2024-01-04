@@ -17,6 +17,7 @@ def populate_verbal_noun_object(default_word, word_data, default_verbs_dict):
         )
 
         verbal_noun_object = POSVerbalNoun(
+            POS="VERBAL_NOUN",
             word=word_data['word'],
             default=default_verb_object,
         )
