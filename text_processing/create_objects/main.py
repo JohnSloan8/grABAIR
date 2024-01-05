@@ -26,7 +26,6 @@ def create_objects(tokenised_input, all_words_dict, default_nouns_dict, default_
             word_data_from_dict = all_words_dict.get(unmodified_word)
             if word_data_from_dict is not None:
                 for word_data in word_data_from_dict:
-                    print('word_data:', word_data)
                     word_object = None
                     if word_data['type'] == 'noun':
                         word_object = populate_noun_object(
